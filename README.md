@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+# 📝 To-do List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Una aplicación Full Stack para gestionar tareas con **React**, **Node.js**, **PostgreSQL** y **Docker**. Ideal para practicar y aprender desarrollo Full Stack con autenticación JWT y persistencia de datos.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologías Utilizadas
 
-## Expanding the ESLint configuration
+- **Frontend**: ⚛️ React + Vite
+- **Backend**: 🌐 Node.js + Express
+- **Base de Datos**: 🗄️ PostgreSQL
+- **Autenticación**: 🔒 JWT (JSON Web Tokens)
+- **Entorno**: 🐳 Docker + Docker Compose
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## ✨ Funcionalidades Implementadas
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 👤 Gestión de Usuarios
+- Registro de usuarios con contraseñas hasheadas.
+- Inicio de sesión con autenticación JWT.
+- Almacenamiento seguro de tokens en `localStorage`.
+- Protección de rutas sensibles para usuarios autenticados.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 📋 Gestión de Tareas
+- Crear, listar, actualizar (completar/descompletar) y eliminar tareas.
+- Protección de rutas de tareas con JWT.
+- Interacción completa con la base de datos PostgreSQL.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### 🛠️ Características Técnicas
+- **Arquitectura Modular**: Separación clara entre frontend, backend y base de datos.
+- **Rutas Protegidas**: Middleware en el backend para validar tokens JWT.
+- **Persistencia de Datos**: PostgreSQL para almacenamiento seguro.
+- **Entorno Reproducible**: Contenedores independientes para frontend, backend y base de datos.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+## 📂 Estructura del Proyecto
+
+```plaintext
+📦 todo-list-app
+├── 📂 frontend          # React + Vite (UI)
+├── 📂 backend           # Node.js + Express (API)
+├── 📂 postgres          # Datos persistentes en PostgreSQL
+├── 🐳 docker-compose.yml # Orquestación de servicios
+└── 📜 README.md         # Documentación del proyecto
