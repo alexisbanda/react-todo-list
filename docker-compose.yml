@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  react-app:
+    build: .
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: todos_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "5000:5000"      # Puerto expuesto para el backend
+    depends_on:
+      - postgres         # Asegura que PostgreSQL esté listo antes de iniciar el backend
+    environment:
+      - PGUSER=user
+      - PGPASSWORD=password
+      - PGDATABASE=todos_db
+      - PGHOST=postgres  # Nombre del contenedor de PostgreSQL
+      - PGPORT=5432
+
+volumes:
+  postgres_data:
